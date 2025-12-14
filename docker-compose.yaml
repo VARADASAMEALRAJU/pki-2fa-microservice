@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    container_name: pki-2fa-service
+    ports:
+      - "9090:8080"
+    volumes:
+      - seed-data:/data
+      - cron-output:/cron
+    environment:
+      - TZ=UTC
+    restart: unless-stopped
+
+volumes:
+  seed-data:
+  cron-output:
